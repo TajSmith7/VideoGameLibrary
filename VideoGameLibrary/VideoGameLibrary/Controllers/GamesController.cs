@@ -148,5 +148,13 @@ namespace VideoGameLibrary.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+
+        /**List Newest Games **/
+        // GET: /Games/Newest
+        public async Task<IActionResult> Newest()
+        {
+            var newestGames = await _gameService.GetNewestGamesAsync();
+            return View(newestGames);
+        }
     }
 }

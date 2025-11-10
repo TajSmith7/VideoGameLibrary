@@ -11,6 +11,8 @@ namespace VideoGameLibrary.Services
         Task AddGameAsync(Game game);
         Task UpdateGameAsync(Game game);
         Task DeleteGameAsync(int id);
+        Task<List<Game>> GetNewestGamesAsync();
+
     }
 
     public class GameService : IGameService
@@ -64,6 +66,13 @@ namespace VideoGameLibrary.Services
                 _context.Games.Remove(game);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public async Task<List<Game>> GetNewestGamesAsync()
+        {
+            return await _context.Games
+                .FromSqlRaw("EXEC GetNewestGames")
+                .ToListAsync();
         }
     }
 }
