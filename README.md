@@ -128,3 +128,21 @@ The logs are structured to include useful fields, making them easy to filter or 
 
 **Error Path Log (Validation Failure)**  
 ![Validation Error Log](screenshots/gameValidationLog.png)
+
+---
+
+### Week 15 – Stored Procedures
+
+For Week 15, I implemented the stored procedure feature for the VideoGameLibrary app. I created a simple procedure called `GetNewestGames` in the database using LocalDB within Visual Studio. This procedure retrieves the top 5 most recently released games by selecting the Id, Name, ReleaseDate, and Description columns from the Games table and ordering the results in descending order of release date. The stored procedure allows the database to handle this query efficiently, separating it from application logic.
+
+I saved the SQL script as `sql/GetNewestGames.sql` in the project folder and committed it to GitHub as evidence of the procedure. This ensures that the procedure can be recreated or reviewed independently of the database.
+
+In the application, I added a method `GetNewestGamesAsync` in the `GameService` class, which calls the stored procedure using EF Core's `FromSqlRaw` and returns the results asynchronously. I also added a `NewestGames` action in the `GamesController` to fetch the data and pass it to a new view, `NewestGames.cshtml`. This view displays the results in a simple table. Finally, I added a “View Newest Games” button to the main Games index page, providing easy navigation. The feature was tested by navigating to `/Games/NewestGames` and confirming that the top 5 most recent games are displayed correctly.
+
+### Screenshots
+
+**Newest Games Button**  
+![Newest Games Button](screenshots/gamesPageNewestButton.png)
+
+**Newest Games Page**  
+![Newest Games Page](screenshots/newestGamesPage.png)
