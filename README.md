@@ -92,3 +92,18 @@ With these features complete, all CRUD actions now work properly. Games can be a
 
 **Delete Game Confirmation**  
 ![Delete Game](screenshots/deleteGamePage.png)
+
+---
+
+## Week 13 – Diagnostics
+
+For Week 13, I implemented a **Diagnostics** feature in the VideoGameLibrary app. The goal was to add a health endpoint that reports on the status of at least one real dependency. In this case, the database is the key dependency, so the health check verifies that the app can connect to the SQL database correctly.
+
+I added a `/healthz` endpoint using ASP.NET Core’s built-in health checks. The endpoint is mapped in `Program.cs` and includes a response writer that returns JSON with the overall status and details for each dependency. For example, the database component reports whether it is healthy and includes a description if any issues occur. This way, it is easy to see at a glance whether the app can access required resources, and any failure is clearly indicated for troubleshooting purposes without exposing sensitive information like connection strings or credentials.
+
+Testing the endpoint is straightforward: navigating to `/healthz` in a browser or sending an HTTP request shows the JSON output. When the database is available, the status shows as “Healthy,” and if the database cannot be reached, it shows “Unhealthy” with a description of the problem. This feature provides a simple but effective way to monitor the app’s health and will be useful for future deployments or troubleshooting in a production environment.
+
+### Screenshot
+
+**Health Endpoint Response**  
+![Health Endpoint](screenshots/healthz.png)
