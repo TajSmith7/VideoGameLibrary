@@ -20,7 +20,7 @@ namespace VideoGameLibrary.Models
         [StringLength(1000)]
         public string Description { get; set; }
 
-        public ICollection<GameGenre> GameGenres { get; set; }
-        public ICollection<GamePlatform> GamePlatforms { get; set; }
+        public ICollection<GameGenre>? GameGenres { get; set; }
+        public ICollection<GamePlatform>? GamePlatforms { get; set; }
     }
 }
