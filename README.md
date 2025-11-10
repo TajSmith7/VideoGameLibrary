@@ -41,3 +41,26 @@ Finally, I created and applied the initial migration. This successfully generate
 
 **GamePlatforms Table**  
 ![GamePlatforms Table](screenshots/gamePlatformTable.png)
+
+---
+### Week 11 – Separation of Concerns / Dependency Injection
+
+For Week 11, I implemented **Separation of Concerns** and **Dependency Injection** in the VideoGameLibrary app. The goal was to create any non-UI logic in a dedicated service, keeping controllers thin and focused only on handling HTTP requests and responses. To do this, I created a new service called `GameService` with an interface `IGameService`. The interface defines the contract for the service, including methods to retrieve all games and get a game by its ID. This ensures that controllers only depend on the interface, not the implementation, making the application more modular and easier to maintain.
+
+The `GameService` contains all the logic for querying the database through `VideoGameLibraryContext`, including loading related data like genres and platforms. I registered the service in the dependency injection container using `AddScoped` in Program.cs, which provides one service instance per HTTP request. Then, I injected `IGameService` into the `GamesController` constructor and used it in both the `Index` and `Details` actions. This keeps the controller lightweight, with no direct database access.
+
+To test the service, I added a test game to the database. Visiting `/Games` displays all games using the service, and `/Games/Details/{id}` shows the details for a single game. This setup demonstrates that the service is properly injected, the controller is thin, and all logic is separated from the UI.
+
+#### Evidence
+
+**Games Service**  
+![Games Service](screenshots/gameService.png)
+
+**Games Controller**  
+![Games Controller](screenshots/gamesController.png)
+
+**Games Page**  
+![Games Page](screenshots/gamesPage.png)
+
+**Game Details Page**  
+![Game Details Page](screenshots/gameDetailsPage.png)
