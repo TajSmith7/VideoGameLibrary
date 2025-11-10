@@ -74,7 +74,7 @@ For Week 12, I focused on adding full CRUD functionality to the **VideoGameLibra
 
 The `Game` model includes simple fields like `Name`, `ReleaseDate`, and `Description`, keeping things straightforward while still showing how model validation works in MVC. The Create and Edit pages include form validation and antiforgery tokens to protect against invalid or malicious submissions. When required fields are left blank, the app displays helpful validation messages to guide users to fix the issue before saving.
 
-With these features complete, all CRUD actions now work properly. Games can be added, displayed in a list, updated, or deleted, and all actions reflect immediately in the database. This milestone represents the first time the app feels fully interactive, allowing real data changes from the front end. It also sets up a solid base for adding more advanced features in future weeks. on as I move into diagnostics, logging, and stored procedures in the next few weeks.
+With these features complete, all CRUD actions now work properly. Games can be added, displayed in a list, updated, or deleted, and all actions reflect immediately in the database. This milestone represents the first time the app feels fully interactive, allowing real data changes from the front end. It also sets up a solid base for adding more advanced features in future weeks. on as I move into diagnostics, logging, and stored procedures in the next few weeks before deploying the app.
 
 ### Screenshots
 
