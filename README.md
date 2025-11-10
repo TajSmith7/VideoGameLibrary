@@ -146,3 +146,16 @@ In the application, I added a method `GetNewestGamesAsync` in the `GameService` 
 
 **Newest Games Page**  
 ![Newest Games Page](screenshots/newestGamesPage.png)
+
+---
+
+### Week 16: Deployment to Azure
+
+For the final week, I deployed the VideoGameLibrary ASP.NET Core MVC application to **Azure App Service**. This step demonstrates that the application can run in a real cloud environment while remaining fully functional, connected to a live Azure SQL Database, and accessible to users via a public URL. Deploying to Azure also allowed me to test how the application behaves outside of my local development environment and ensure that all functionality works as intended in production.
+
+I created a new Azure App Service using the **free tier** under my student subscription and linked it to the Azure SQL Database I had previously provisioned. To keep the deployment secure, I avoided hardcoding any database credentials directly in the project. Instead, I set them as **environment variables** in the App Service configuration (`DB_USER` and `DB_PASS`) and updated the connection string in `Program.cs` to read these variables at runtime. This ensures that sensitive information is never exposed in source control and can be managed separately from the codebase.
+
+After publishing, the app became publicly accessible at the provided Azure URL (`https://videogamelibrary-fsb5dwd7afhdcrar.eastus2-01.azurewebsites.net/`). I confirmed that all key features worked as expected, including the `/games` index and details pages, CRUD operations, the `/healthz` diagnostic endpoint, and the stored procedure for **Newest Games**. This deployment verifies that the app is fully operational, secure, and accessible in a cloud environment.
+
+**Deployed Games Page**  
+![Deployed Games Page](screenshots/deployedGamesPage.png)
