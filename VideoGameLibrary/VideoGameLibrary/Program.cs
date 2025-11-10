@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using VideoGameLibrary.Data;
+using VideoGameLibrary.Services;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<VideoGameLibraryContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IGameService, GameService>();
 
 var app = builder.Build();
 

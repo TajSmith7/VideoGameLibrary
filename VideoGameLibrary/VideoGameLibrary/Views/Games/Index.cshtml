@@ -1,0 +1,9 @@
+﻿@model IEnumerable<VideoGameLibrary.Models.Game>
+
+<h2>Games</h2>
+<ul>
+    @foreach (var game in Model)
+    {
+        <li>@game.Name</li>
+    }
+</ul>
