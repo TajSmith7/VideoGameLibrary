@@ -107,3 +107,24 @@ Testing the endpoint is straightforward: navigating to `/healthz` in a browser o
 
 **Health Endpoint Response**  
 ![Health Endpoint](screenshots/healthz.png)
+
+---
+
+## Week 14 – Logging
+
+For Week 14, I implemented a **Logging** feature in the VideoGameLibrary app. The goal was to add structured, actionable logs along a key path in the application, providing visibility into both successful operations and potential errors. I chose the CRUD actions for the Game entity as the main path for logging, specifically focusing on create, edit, and delete operations.
+
+I injected an `ILogger<GamesController>` into the `GamesController` via dependency injection. Within the controller, I added log statements for the following scenarios:
+
+- **Success paths:** When a game is successfully created, edited, or deleted, an information-level log is generated including key details such as the game’s ID and name.  
+- **Error paths:** If a model validation fails, if a route ID does not match the game ID, or if an exception occurs during database operations, a warning or error-level log is generated with structured details.
+
+The logs are structured to include useful fields, making them easy to filter or search for troubleshooting. They appear in the console during development, and in a production environment could be directed to a file or external logging service. Testing was done by performing CRUD operations and observing the logs for both successful actions and intentionally triggered validation errors or exceptions.
+
+### Screenshots
+
+**Successful Game Creation Log**  
+![Game Creation Log](screenshots/gameCreateLog.png)
+
+**Error Path Log (Validation Failure)**  
+![Validation Error Log](screenshots/gameValidationLog.png)
