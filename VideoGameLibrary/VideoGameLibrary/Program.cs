@@ -13,8 +13,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    .Replace("{DB_USER}", Environment.GetEnvironmentVariable("DB_USER"))
+    .Replace("{DB_PASS}", Environment.GetEnvironmentVariable("DB_PASS"));
+
 builder.Services.AddDbContext<VideoGameLibraryContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IGameService, GameService>();
 
