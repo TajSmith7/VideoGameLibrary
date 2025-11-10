@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using System.Text.Json;
 using VideoGameLibrary.Data;
 using VideoGameLibrary.Services;
 
@@ -15,6 +18,10 @@ builder.Services.AddDbContext<VideoGameLibraryContext>(options =>
 
 builder.Services.AddScoped<IGameService, GameService>();
 
+builder.Services.AddHealthChecks()
+    .AddDbContextCheck<VideoGameLibraryContext>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,6 +36,26 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapHealthChecks("/healthz", new HealthCheckOptions
+{
+    ResponseWriter = async (context, report) =>
+    {
+        context.Response.ContentType = "application/json";
+        var result = JsonSerializer.Serialize(new
+        {
+            status = report.Status.ToString(),
+            details = report.Entries.Select(e => new
+            {
+                name = e.Key,
+                status = e.Value.Status.ToString(),
+                description = e.Value.Description
+            })
+        });
+        await context.Response.WriteAsync(result);
+    }
+});
+
 
 app.MapStaticAssets();
 
