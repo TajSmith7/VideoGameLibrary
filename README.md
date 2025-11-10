@@ -11,7 +11,7 @@ The Video Game Library is an ASP.NET Core MVC application that allows users to s
 | 12 | CRUD | Create/Edit/Delete forms for games | Users can manage games | - [ ] Forms display<br>- [ ] Validation works<br>- [ ] Changes persist in DB | Screenshots; write-up | Add/edit/delete a game; check DB |
 | 13 | Diagnostics | `/healthz` endpoint | Check DB connectivity | - [ ] Returns healthy if DB is up<br>- [ ] Returns unhealthy if DB down | Screenshots; write-up | Stop DB and test endpoint |
 | 14 | Logging | Log game CRUD actions | Track structured logs | - [ ] Logs for each CRUD action<br>- [ ] Logs include game ID | Screenshots; write-up | Perform CRUD; check logs |
-| 15 | Stored Procedures | Get number of games per genre | Demonstrate calling a stored procedure and displaying results | - [ ] SP executes<br>- [ ] Results displayed in app | SQL script; code snippet calling SP; screenshot of results | Add games with genres; run SP in DB; verify displayed results |
+| 15 | Stored Procedures | Get top 5 most recently released games | Demonstrate calling a stored procedure and displaying results | - [ ] SP executes<br>- [ ] Results displayed in app | SQL script; code snippet calling SP; screenshot of results | Add games with genres; run SP in DB; verify displayed results |
 | 16 | Deployment | Deploy to Azure | Make app publicly accessible | - [ ] App Service created<br>- [ ] App works online | Screenshots; write-up; URL | Visit URL; test `/healthz` and game list |
 
 ---
