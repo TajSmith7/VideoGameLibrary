@@ -64,3 +64,31 @@ To test the service, I added a test game to the database. Visiting `/Games` disp
 
 **Game Details Page**  
 ![Game Details Page](screenshots/gameDetailsPage.png)
+
+---
+
+## Week 12 – CRUD Functionality
+
+
+For Week 12, I focused on adding full CRUD functionality to the **VideoGameLibrary** app. This update allows users to create, view, edit, and delete games directly through the web interface. I implemented asynchronous data access methods such as `ToListAsync()`, `FindAsync()`, and `SaveChangesAsync()` to make database operations faster and more efficient. Using async methods also helps the app handle multiple requests smoothly without slowing down or freezing while data is being processed.
+
+The `Game` model includes simple fields like `Name`, `ReleaseDate`, and `Description`, keeping things straightforward while still showing how model validation works in MVC. The Create and Edit pages include form validation and antiforgery tokens to protect against invalid or malicious submissions. When required fields are left blank, the app displays helpful validation messages to guide users to fix the issue before saving.
+
+With these features complete, all CRUD actions now work properly. Games can be added, displayed in a list, updated, or deleted, and all actions reflect immediately in the database. This milestone represents the first time the app feels fully interactive, allowing real data changes from the front end. It also sets up a solid base for adding more advanced features in future weeks. on as I move into diagnostics, logging, and stored procedures in the next few weeks.
+
+### Screenshots
+
+**Games List Page**  
+![Games List](screenshots/gamesPageCRUD.png)
+
+**Game Details Page**  
+![Games Details](screenshots/gameDetailsPageCRUD.png)
+
+**Create Game Page**  
+![Create Game](screenshots/createGamePage.png)
+
+**Edit Game Page**  
+![Edit Game](screenshots/editGamePage.png)
+
+**Delete Game Confirmation**  
+![Delete Game](screenshots/deleteGamePage.png)
